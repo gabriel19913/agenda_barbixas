@@ -1,4 +1,4 @@
-# Agenda dos Barbixas
+# Agenda dos Barbixas (https://barbixas.com.br)
 
 - 10 novembro (dom)
   - Improvável Belo Horizonte - MG

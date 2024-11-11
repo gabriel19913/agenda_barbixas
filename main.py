@@ -51,7 +51,7 @@ async def get_agenda(playwright):
         list_shows_clean.append(clean_item)
     
     with open("README.md", "w") as file:
-        file.write("# Agenda dos Barbixas\n\n")
+        file.write("# Agenda dos Barbixas (https://barbixas.com.br)\n\n")
         for date, show, link in zip(list_dates, list_shows_clean, list_links):
             file.write(f"- {date}\n")
             file.write(f"  - {show}\n")
