@@ -14,16 +14,12 @@ async def get_agenda(playwright):
     await page.set_viewport_size({"width": 1920, "height": 1080})
     await page.goto(url)
     time.sleep(2)
-    # await page.locator("//span[@class='elementor-button-text']").click()
-    # try:
-        # while True:
     try:
         while await page.get_by_text("Carregar mais").is_visible():
             await page.locator("text=Carregar mais").click(timeout=30000, force=True)
             await asyncio.sleep(1)
     except TimeoutError:
         pass
-    print("TA FORAAAAA")
     dates = page.locator("//div[@class='elementor-column elementor-col-33 elementor-top-column elementor-element elementor-element-325dcc9']")
     shows = page.locator("//div[@class='elementor-column elementor-col-33 elementor-top-column elementor-element elementor-element-ccc2430']")
     links = page.locator("//a[@class='elementor-button elementor-button-link elementor-size-sm elementor-animation-shrink']")
@@ -53,9 +49,14 @@ async def get_agenda(playwright):
     for item in list_shows:
         clean_item = item.replace("/*! elementor - v3.22.0 - 16-06-2024 */\n.elementor-heading-title{padding:0;margin:0;line-height:1}.elementor-widget-heading .elementor-heading-title[class*=elementor-size-]>a{color:inherit;font-size:inherit;line-height:inherit}.elementor-widget-heading .elementor-heading-title.elementor-size-small{font-size:15px}.elementor-widget-heading .elementor-heading-title.elementor-size-medium{font-size:19px}.elementor-widget-heading .elementor-heading-title.elementor-size-large{font-size:29px}.elementor-widget-heading .elementor-heading-title.elementor-size-xl{font-size:39px}.elementor-widget-heading .elementor-heading-title.elementor-size-xxl{font-size:59px}", "")
         list_shows_clean.append(clean_item)
-    # shows = page.locator("//div[@class='elementor-column elementor-col-33 elementor-top-column elementor-element elementor-element-ccc2430']")
-    print(list_links)
-    time.sleep(200000)
+    
+    with open("README.md", "w") as file:
+        file.write("# Agenda dos Barbixas\n\n")
+        for date, show, link in zip(list_dates, list_shows_clean, list_links):
+            file.write(f"- {date}\n")
+            file.write(f"  - {show}\n")
+            file.write(f"  - [Link do ingresso]({link})\n")
+            file.write("\n")
     await browser.close()
 
 async def main():
