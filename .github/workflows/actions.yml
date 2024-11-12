@@ -23,7 +23,7 @@ jobs:
           libwoff1 libvpx7 libevent-2.1-7 libopus0 \
           libgstreamer-plugins-base1.0-0 libgstreamer1.0-0 \
           libharfbuzz-icu0 libhyphen0 libmanette-0.2-0 \
-          flite libgles2-mesa libx264
+          flite libgles2-mesa
 
       - name: git pull
         run: |
