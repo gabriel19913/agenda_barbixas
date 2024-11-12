@@ -25,9 +25,8 @@ jobs:
           libharfbuzz-icu0 libhyphen0 libmanette-0.2-0 \
           flite libgles2-mesa
 
-      - name: git pull
-        run: |
-            git pull --rebase
+      - name: Pull remote changes
+        run: git pull origin main --rebase
       
       - name: install python packages
         run: |
