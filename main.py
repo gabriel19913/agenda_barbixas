@@ -1,9 +1,6 @@
 import asyncio
 from playwright.async_api import async_playwright, TimeoutError
 import time
-import logging
-import logging.handlers
-import os
 
 def clean_text(text):
     return text.replace("\t", "").replace("\n\n\n\n", " ").replace("\n\n\n", "").strip()
