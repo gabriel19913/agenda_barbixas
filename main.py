@@ -57,13 +57,6 @@ async def get_agenda(playwright):
     #         file.write(f"  - {show}\n")
     #         file.write(f"  - [Link do ingresso]({link})\n")
     #         file.write("\n")
-    for date, show, link in zip(list_dates, list_shows_clean, list_links):
-        string = f"""
-        - {date}\n
-        - {show}\n"
-        - {link}\n
-        """
-        print(string)
     await browser.close()
 
 async def main():
