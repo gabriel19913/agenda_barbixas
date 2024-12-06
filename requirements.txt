@@ -1,4 +1,5 @@
 argcomplete==3.4.0
+beautifulsoup4==4.12.3
 certifi==2024.8.30
 charset-normalizer==3.4.0
 click==8.1.7
@@ -9,7 +10,9 @@ pipx==1.6.0
 platformdirs==4.2.2
 playwright==1.48.0
 pyee==12.0.0
+python-dotenv==1.0.1
 requests==2.32.3
+soupsieve==2.6
 typing_extensions==4.12.2
 urllib3==2.2.3
 userpath==1.9.2
