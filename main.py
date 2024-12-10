@@ -120,6 +120,7 @@ async def main():
 
 if __name__ == "__main__":
     schedule = asyncio.run(main())
+    print(schedule)
     load_dotenv()
     PUSHBULLET_TOKEN = os.environ.get('PUSHBULLET_TOKEN')
     send_push(schedule)
