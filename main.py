@@ -3,6 +3,7 @@ from playwright.async_api import async_playwright, TimeoutError
 import time
 import requests
 from dotenv import load_dotenv
+from datetime import datetime
 import re
 import os
 
@@ -17,7 +18,7 @@ def send_push(text):
     }
     data = {
         "body": text,
-        "title": "Agenda - Barbixas",
+        "title": f"Barbixas ({datetime.now().strftime('%d/%m/%Y %H:%m')})",
         "type": "note"
     }
 
