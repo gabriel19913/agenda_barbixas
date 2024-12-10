@@ -101,6 +101,10 @@ async def get_agenda(playwright):
     
     output = []
     for city_date, links in grouped.items():
+        print("City - Date")
+        print(city_date)
+        print("Links")
+        print(links)
         output.append(city_date)
         output.extend(links)
         output.append("")
