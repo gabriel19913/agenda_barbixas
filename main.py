@@ -3,7 +3,7 @@ from playwright.async_api import async_playwright, TimeoutError
 import time
 import requests
 from dotenv import load_dotenv
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
 import re
 import os
 
@@ -18,7 +18,7 @@ def send_push(text):
     }
     data = {
         "body": text,
-        "title": f"Barbixas ({datetime.now().strftime('%d/%m/%Y %H:%m')})",
+        "title": f"Agenda Barbixas",
         "type": "note"
     }
 
@@ -104,6 +104,10 @@ async def get_agenda(playwright):
         output.append(city_date)
         output.extend(links)
         output.append("")
+    timezone_minus_3 = timezone(timedelta(hours=-3))
+    current_time_minus_3 = datetime.now(timezone_minus_3)
+    formatted_time = current_time_minus_3.strftime('%d/%m/%Y %H:%M')
+    output.append(f"Consultado em {formatted_time}")
     write_read_me(output)
     await browser.close()
     return "\n".join(output)
