@@ -110,17 +110,20 @@ async def get_agenda(playwright):
     output.append(f"Consultado em {formatted_time}")
     write_read_me(output)
     await browser.close()
-    return "\n".join(output)
+    return "\n".join(output), output
 
 async def main():
     async with async_playwright() as playwright:
-        schedule = await get_agenda(playwright)
+        schedule, output = await get_agenda(playwright)
     print(schedule)
-    return schedule
+    return schedule, output
 
 if __name__ == "__main__":
-    schedule = asyncio.run(main())
+    schedule, output = asyncio.run(main())
+    print("Schedule")
     print(schedule)
+    print("Output")
+    print(output)
     load_dotenv()
     PUSHBULLET_TOKEN = os.environ.get('PUSHBULLET_TOKEN')
     send_push(schedule)
