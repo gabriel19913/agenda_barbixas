@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
         - name: checkout repo content
-          uses: actions/checkout@v2
+          uses: actions/checkout@v4
         - name: setup python
           uses: actions/setup-python@v4
           with:
@@ -37,3 +37,4 @@ jobs:
           env: 
             PUSHBULLET_TOKEN: ${{ secrets.PUSHBULLET_TOKEN }}
           run: python main.py
+        - uses: stefanzweifel/git-auto-commit-action@v5
